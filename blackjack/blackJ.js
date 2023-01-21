@@ -23,16 +23,13 @@ function drawCard(activeplayer) {
     document.querySelector(activeplayer['div']).appendChild(card);
     hitsound.play();
     
-    // Update Score
     updateScore(currentCard, activeplayer);
 
-    // Show Score
     showScore(activeplayer);
     
 }
 
 function updateScore(currentcard, activeplayer){
-    // For Ace
     if(currentcard == 'AC' || currentcard == 'AD' || currentcard == 'AH' || currentcard == 'AS'){
         if((activeplayer['score'] + BJgame['cardsmap'][currentcard][1]) <= 21){
 
@@ -42,7 +39,7 @@ function updateScore(currentcard, activeplayer){
             activeplayer['score'] += BJgame['cardsmap'][currentcard][0];
         }
     }
-    else{  //For Other Cases
+    else{  
         activeplayer['score'] += BJgame['cardsmap'][currentcard];
     }   
 }
@@ -57,7 +54,6 @@ function showScore(activeplayer){
     }
 }
 
-// Compute Winner Function
 function findwinner(){
     let winner;
 
@@ -111,14 +107,13 @@ function showresults(winner){
 
 }
 
-// Scoreboard
+
 function scoreboard(){
     document.querySelector('#wins').textContent = BJgame['wins'];
     document.querySelector('#losses').textContent = BJgame['losses'];
     document.querySelector('#draws').textContent = BJgame['draws'];
 }
 
-// Hit Button (starting)
 document.querySelector('#hit').addEventListener('click', BJhit);
 
 const hitsound = new Audio('./static/sounds/swish.m4a');
@@ -131,7 +126,6 @@ function BJhit(){
     }
 }
 
-// Deal Button
 document.querySelector('#deal').addEventListener('click', BJdeal);
 
 function BJdeal(){
@@ -168,7 +162,7 @@ function BJdeal(){
     }
 }
 
-// Dealer's Logic (2nd player) OR Stand button
+
 document.querySelector('#stand').addEventListener('click', BJstand)
 
 function BJstand(){
